@@ -98,10 +98,15 @@ export default function LoginPage() {
 
             <button
                 type="button"
-                className="w-full py-3 rounded-lg bg-white text-zinc-800 font-medium flex items-center justify-center gap-2 hover:bg-zinc-100 transition"
+                onClick={() => {
+                  window.location.href = 'http://localhost:8081/oauth2/authorization/kakao';
+                }}
+                className="w-full py-3 bg-[#FEE500] text-black font-semibold rounded-lg hover:bg-[#FDD835] transition flex items-center justify-center gap-2"
             >
-              <img src="https://www.google.com/favicon.ico" alt="Google" className="w-5 h-5" />
-              Google로 계속하기
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path fillRule="evenodd" clipRule="evenodd" d="M10 2C5.029 2 1 5.129 1 8.989c0 2.464 1.644 4.627 4.114 5.847-.18.676-.65 2.453-.746 2.835-.118.472.173.466.364.339.15-.1 2.384-1.622 3.354-2.28.296.044.6.068.914.068 4.971 0 9-3.129 9-6.989S14.971 2 10 2" fill="black"/>
+              </svg>
+              카카오 로그인
             </button>
           </form>
 
