@@ -99,7 +99,7 @@ export default function LoginPage() {
             <button
                 type="button"
                 onClick={() => {
-                  window.location.href = 'http://localhost:8081/oauth2/authorization/kakao';
+                  window.location.href = 'http://localhost:8080/oauth2/authorization/kakao';
                 }}
                 className="w-full py-3 bg-[#FEE500] text-black font-semibold rounded-lg hover:bg-[#FDD835] transition flex items-center justify-center gap-2"
             >
