@@ -21,9 +21,41 @@ export interface MainPageResponse {
   featuredConcerts: Concert[];
 }
 
+export interface ConcertDetail {
+  id: number;
+  title: string;
+  artist: string;
+  description: string;
+  posterUrl: string;
+
+  genre: string;
+  genreDisplayName: string;
+  status: string;
+  statusDisplayName: string;
+
+  buildingName: string;
+  hallName: string;
+
+  startDate: string;
+  endDate: string;
+  bookingStartAt: string;
+  bookingEndAt: string;
+
+  sections: SectionPrice[];
+}
+
+export interface SectionPrice {
+  sectionName: string;
+  price: number;
+}
+
 export const concertAPI = {
   getMainPage: async (): Promise<MainPageResponse> => {
     const response = await axios.get(`${API_URL}/concerts/main`);
+    return response.data;
+  },
+  getDetail: async (id: number): Promise<ConcertDetail> => {
+    const response = await axios.get(`${API_URL}/concerts/${id}`);
     return response.data;
   },
 };
