@@ -1,6 +1,7 @@
 import {useEffect, useState, useRef} from 'react';
 import {motion, useScroll, useTransform, useInView} from 'framer-motion';
 import {concertAPI, type MainPageResponse} from '../api/concert';
+import {Link} from "react-router-dom";
 
 // 타이핑 효과 컴포넌트
 function TypingText({text, className, delay = 0}: {
@@ -294,6 +295,7 @@ export function MainPage() {
             <div className="space-y-4">
               {data.featuredConcerts.map((concert, index) => (
                   <ScrollReveal key={concert.id} delay={index * 0.1}>
+                    <Link to={`/concerts/${concert.id}`}>
                     <motion.div
                         className="group cursor-pointer"
                         whileHover={{scale: 1.02}}
@@ -336,6 +338,7 @@ export function MainPage() {
                     </span>
                       </div>
                     </motion.div>
+                    </Link>
                   </ScrollReveal>
               ))}
             </div>
