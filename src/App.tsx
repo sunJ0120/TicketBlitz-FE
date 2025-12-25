@@ -5,6 +5,7 @@ import SignupPage from './pages/SignupPage';
 import OAuthCallback from "./pages/OAuthCallback.tsx";
 import {MainPage} from "./pages/MainPage.tsx";
 import {ConcertDetailPage} from "./pages/ConcertDetailPage.tsx";
+import ConcertListPage from "./pages/ConcertListPage.tsx";
 
 function HomePage() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/oauth/callback" element={<OAuthCallback />} />
           <Route path="/concerts/:id" element={<ConcertDetailPage />} />
+          <Route path="/concerts" element={<ConcertListPage />} />
         </Routes>
       </BrowserRouter>
   );
