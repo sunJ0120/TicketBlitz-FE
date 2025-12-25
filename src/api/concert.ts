@@ -1,6 +1,4 @@
-import axios from 'axios';
-
-const API_URL = 'http://localhost:8080/api/v1';
+import axios from './axios';
 
 export interface Concert {
   id: number;
@@ -49,13 +47,54 @@ export interface SectionPrice {
   price: number;
 }
 
+export interface ConcertSearchParams {
+  keyword?: string;
+  genre?: string;
+  status?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  startDate?: string;
+  endDate?: string;
+  cursor?: string;
+  size?: number;
+  sortType?: 'CONCERT_DATE' | 'VIEW_COUNT' | 'PRICE' | 'TICKET_OPEN_AT';
+  isAsc?: boolean;
+}
+
+export interface CursorPageResponse<T> {
+  content: T[];
+  nextCursor: string | null;
+  hasNext: boolean;
+  size: number;
+  returnedCount: number;
+}
+
+export interface ConcertSummary {
+  id: number;
+  title: string;
+  artist: string;
+  genreDisplayName: string;
+  posterUrl: string | null;
+  startDate: string;
+  endDate: string;
+  venueName: string;
+  minPrice: number;
+  status: string;
+  statusDisplayName: string;
+  viewCount: number;
+}
+
 export const concertAPI = {
-  getMainPage: async (): Promise<MainPageResponse> => {
-    const response = await axios.get(`${API_URL}/concerts/main`);
+  getMainPage: async () => {
+    const response = await axios.get('/pages/main');
     return response.data;
   },
-  getDetail: async (id: number): Promise<ConcertDetail> => {
-    const response = await axios.get(`${API_URL}/concerts/${id}`);
+  getDetail: async (id: number) => {
+    const response = await axios.get(`/concerts/${id}`);
+    return response.data;
+  },
+  getList: async (params: ConcertSearchParams) => {
+    const response = await axios.get('/concerts', { params });
     return response.data;
   },
 };
